@@ -1,0 +1,31 @@
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
+    color: black;
+    border-radius: 0;
+    border-bottom: 10px solid black;
+  }                       
+
+  #mainrow {
+    background-color: aquamarine;
+    height: 400px;
+    
+  }
+
+  #row1 {
+      background-color: black;
+      height: 360px;
+  }
+
+  .day {
+    background-color:pink;
+    /* height: 300px; */
+    border-style: solid;
+    border-color: royalblue;
+}
+.daily {
+    background-color: red;
+    height: 70px;
+    border-style: solid;
+    border-color: black;
+}
