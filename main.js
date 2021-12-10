@@ -90,7 +90,7 @@ function apiCall() {
 
 
 console.log("hello people")
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiKey;
     fetch(queryURL)
     .then(function (response) {
       return response.json();
