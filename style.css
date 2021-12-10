@@ -17,6 +17,11 @@
       height: 360px;
   }
 
+  .history {
+    background-color: pink;
+    height: 100px;
+}
+
   .day {
     background-color:pink;
     /* height: 300px; */
@@ -24,8 +29,35 @@
     border-color: royalblue;
 }
 .daily {
-    background-color: red;
+    background-color: rgb(129, 106, 106);
     height: 70px;
     border-style: solid;
     border-color: black;
+}
+
+.name {
+    background-color: rgb(129, 106, 106);
+    height: 100px;
+    border-style: solid;
+    border-color: black;
+}
+
+.icon {
+    background-color: rgb(129, 106, 106);
+    height: 100px;
+    border-style: solid;
+    border-color: black;
+
+}
+
+.current {
+    background-color: rgb(129, 106, 106);
+    height: 100px;
+    border-style: solid;
+    border-color: black;
+}
+
+.text{
+    font-size: 1.8rem;
+    height: 40px;
 }

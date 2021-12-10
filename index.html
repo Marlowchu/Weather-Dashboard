@@ -20,19 +20,32 @@
     
   <div class="container">
       <div class="row justify-content-md-center">
-        <textarea class="col-md-3" id="input">
+        <input class="col-md-3 text" id="input">
 
-        </textarea>
+      </input>
+
     
         <button class="col-md-1"  id="btn">
           search
         </button>
-      
+        
   </div>
+
   </header>
+  <div class="history" id="history"></div>
+
   <div class="container" >
     
-    <div class="row" id="mainrow">
+    <div class="row align-items-start" id="mainrow">
+        <div class="col"></div>
+        <div class="col-md-12 name" id="cityName"></div>
+        <div class="row row-cols-1 m-50% icon" id="icon"></div>
+        <div class="col-md-12"></div>
+        <div class="col-md-3 current" id="temp"></div>
+        <div class="col-md-3 current" id="humidity"></div>
+        <div class="col-md-3 current" id="wind"></div>
+        <div class="col-md-3 current" id="uv"></div>
+        
       
       <!-- <div class="col col-md-" id="mainbox">
 
@@ -42,16 +55,40 @@
     <div class="row day1 justify-content-md-center" id="row1">
         
                 <div class="col-md-2 day" id= "day 1">
-                    <div class="col daily" id="da"></div>
-                    <div class="col daily" id="da"></div>
-                    <div class="col daily" id="da"></div>
-                    <div class="col daily" id="da"></div>
-                    <div class="col daily" id="da"></div>
+                    <div class="col daily" id="dayDate"></div>
+                    <div class="col daily" id="dayTemp"></div>
+                    <div class="col daily" id="dayHumidity"></div>
+                    <div class="col daily" id="dayUv"></div>
+                    <div class="col daily" id="dayWind"></div>
                 </div>
-                <div class="col-md-2 day" id= "day 2"></div>
-                <div class="col-md-2 day" id= "day 3"></div>
-                <div class="col-md-2 day" id= "day 4"></div>
-                <div class="col-md-2 day" id= "day 5"></div>
+                <div class="col-md-2 day" id= "day 2">
+                    <div class="col daily" id="dayDate1"></div>
+                    <div class="col daily" id="dayTemp1"></div>
+                    <div class="col daily" id="dayHumidity1"></div>
+                    <div class="col daily" id="dayUv1"></div>
+                    <div class="col daily" id="dayWind1"></div>
+                </div>
+                <div class="col-md-2 day" id= "day 3">
+                    <div class="col daily" id="dayDate2"></div>
+                    <div class="col daily" id="dayTemp2"></div>
+                    <div class="col daily" id="dayHumidity2"></div>
+                    <div class="col daily" id="dayUv2"></div>
+                    <div class="col daily" id="dayWind2"></div>
+                </div>
+                <div class="col-md-2 day" id= "day 4">
+                    <div class="col daily" id="dayDate3"></div>
+                    <div class="col daily" id="dayTemp3"></div>
+                    <div class="col daily" id="dayHumidity3"></div>
+                    <div class="col daily" id="dayUv3"></div>
+                    <div class="col daily" id="dayWind3"></div>
+                </div>
+                <div class="col-md-2 day" id= "day 5">
+                    <div class="col daily" id="dayDate4"></div>
+                    <div class="col daily" id="dayTemp4"></div>
+                    <div class="col daily" id="dayHumidity4"></div>
+                    <div class="col daily" id="dayUv4"></div>
+                    <div class="col daily" id="dayWind4"></div>
+                </div>
         
               </div>
    
