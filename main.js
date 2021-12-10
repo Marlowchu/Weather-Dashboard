@@ -70,18 +70,28 @@ var resultDisplay =[]
 
 var resultDisplaylocal =[]
 
-// history ()
+if (localStorage.getItem("key")!=null) {
+  history ()
+}
+
 
 // button click
 searchEl.on('click', function () {
         
     // take the input and save it to be passed to api call
+
+
+    result = localStorage.getItem("key")
+    result = JSON.parse(result);
+
+
     city = document.getElementById("input").value;
-    //  result.push(city);
-    // var recent = JSON.stringify (result);
-    // localStorage.setItem("key", recent)
+     result.push(city);
+    var recent = JSON.stringify (result);
+    localStorage.setItem("key", recent)
 // call funtions
-    apiCall ()
+    apiCall ();
+    searchAdd ()
     
   });
 
@@ -89,7 +99,7 @@ searchEl.on('click', function () {
 function apiCall() {
 
 
-console.log("hello people")
+
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiKey;
     fetch(queryURL)
     .then(function (response) {
@@ -155,9 +165,9 @@ function apiCall2() {
     //   console.log(weatherIcon)
 
       
-      for ( i = 0; i < 5; i++) {
+      for ( i = 1; i < 6; i++) {
           
-        if (i==0) {
+        if (i==1) {
             
         dayDate = new Date( (display2.daily[i].dt) * 1000).toDateString();
         dayDateEl.textContent = dayDate    
@@ -172,7 +182,7 @@ function apiCall2() {
 
         }
         
-        if (i==1) {
+        if (i==2) {
             
             dayDate = new Date( (display2.daily[i].dt) * 1000).toDateString();
             dayDateEl1.textContent = dayDate
@@ -187,7 +197,7 @@ function apiCall2() {
     
             }
 
-            if (i==2) {
+            if (i==3) {
             
                 dayDate = new Date( (display2.daily[i].dt) * 1000).toDateString();
                 dayDateEl2.textContent = dayDate
@@ -202,7 +212,7 @@ function apiCall2() {
         
                 }
 
-                if (i==3) {
+                if (i==4) {
                     
                     dayDate = new Date( (display2.daily[i].dt) * 1000).toDateString();
                     dayDateEl3.textContent = dayDate
@@ -218,7 +228,7 @@ function apiCall2() {
                     }
 
 
-                    if (i==4) {
+                    if (i==5) {
                         dayDate = new Date( (display2.daily[i].dt) * 1000).toDateString();
                         dayDateEl4.textContent = dayDate
                         dayTemp = (Math.floor(display2.daily[i].temp.day)+ " ℉");
@@ -260,38 +270,86 @@ function displayBoxes() {
 
 
 
-// function history () {
+function history () {
 
 
-//     resultlocal = localStorage.getItem("key")
-//     resultlocal = JSON.parse(resultlocal);
-//     resultlocal.forEach(i => {
-//     //     console.log(i)
-//     //     recentEl
-//     // var rsearch = document.createTextNode = `<button class="btn" onclick="apiCall">${i}</button>`
-//     //     document.body.appendChild (rsearch)
+    resultlocal = localStorage.getItem("key")
+    resultlocal = JSON.parse(resultlocal);
+    resultlocal.forEach(i => {
+    //     console.log(i)
+    //     recentEl
+    // var rsearch = document.createTextNode = `<button class="btn" onclick="apiCall">${i}</button>`
+    //     document.body.appendChild (rsearch)
 
         
-//     const para = document.createElement("button");
-//     const node = document.createTextNode(i);
-//     para.setAttribute("onclick", "apiCall3()");
-//     para.setAttribute("id", i);
-//     para.appendChild(node);
-//     const element = document.getElementById("history");
-//     element.appendChild(para);
-//     });
+    const para = document.createElement("button");
+    const node = document.createTextNode(i);
+    para.setAttribute("onclick", "recentClick(this.id)");
+    para.setAttribute("id", i);
+    para.setAttribute("class", "recentBtn");
+    para.appendChild(node);
+    const element = document.getElementById("history");
+    element.appendChild(para);
+    });
 //     // recentEl.innerHTML = `<button class="btn" onclick="apiCall">${i}</button>`
+      
+}
+
+
+function searchAdd () {
+
+      
+  const para = document.createElement("button");
+  const node = document.createTextNode(city);
+  para.setAttribute("onclick", "recentClick(this.id)");
+  para.setAttribute("id", city);
+  para.setAttribute("class", "recentBtn");
+  para.appendChild(node);
+  const element = document.getElementById("history");
+  element.appendChild(para);
+  
     
+}
 
 
 
 
 
-    
-// }
+function recentClick(a) {
+  console.log (a)
+  city = a
+
+  var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiKey;
+  fetch(queryURL)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+
+    // grab the video Id from response and save it
+  //   vidId = data.items[0].id.videoId
+      display = data
+      
+      lat = display.coord.lat
+      lon = display.coord.lon
+      
+      // resultDisplay.push(display);
+
+      // var recent = JSON.stringify (resultDisplay);
+      // localStorage.setItem("display", recent)
 
 
+    console.log(display)
 
+    var datecode = display.dt
+   
+
+    apiCall2 ()
+        })
+  
+
+  
+}
 
 
 // city name display.name
