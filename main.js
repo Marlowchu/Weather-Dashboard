@@ -70,6 +70,8 @@ var resultDisplay =[]
 
 var resultDisplaylocal =[]
 
+
+// if there is data in key run the history function, no data in local stoarage don't run.
 if (localStorage.getItem("key")!=null) {
   history ()
 }
@@ -78,18 +80,23 @@ if (localStorage.getItem("key")!=null) {
 // button click
 searchEl.on('click', function () {
         
-    // take the input and save it to be passed to api call
+    
 
 
-    result = localStorage.getItem("key")
-    result = JSON.parse(result);
+  // if there is data in local storage get the data and save it in the result array
+    if (localStorage.getItem("key")!=null) {
+      result = localStorage.getItem("key")
+      result = JSON.parse(result);
+    }
+   
 
-
+// get the input from the user and add it to the result array then save it in local stoarge
     city = document.getElementById("input").value;
      result.push(city);
     var recent = JSON.stringify (result);
     localStorage.setItem("key", recent)
-// call funtions
+
+    // call funtions
     apiCall ();
     searchAdd ()
     
@@ -98,8 +105,7 @@ searchEl.on('click', function () {
 
 function apiCall() {
 
-
-
+    // call weather api
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiKey;
     fetch(queryURL)
     .then(function (response) {
@@ -107,19 +113,11 @@ function apiCall() {
     })
     .then(function (data) {
 
-      // grab the video Id from response and save it
-    //   vidId = data.items[0].id.videoId
         display = data
         
         lat = display.coord.lat
         lon = display.coord.lon
         
-        // resultDisplay.push(display);
-
-        // var recent = JSON.stringify (resultDisplay);
-        // localStorage.setItem("display", recent)
-
-
       console.log(display)
 
       var datecode = display.dt
@@ -139,12 +137,7 @@ function apiCall2() {
     })
     .then(function (data) {
 
-      // grab the video Id from response and save it
-    //   vidId = data.items[0].id.videoId
         display2 = data
-
-
-       
 
       console.log(display2)
 
@@ -162,9 +155,8 @@ function apiCall2() {
       console.log(humidity+ "%")
       console.log(Math.floor(wind) +" MPH");
       console.log(uv)
-    //   console.log(weatherIcon)
+   
 
-      
       for ( i = 1; i < 6; i++) {
           
         if (i==1) {
@@ -241,14 +233,9 @@ function apiCall2() {
                         dayWindEl4.textContent = dayWind
                 
                         }
-
-
-
-
       }
 
       displayBoxes()
-
 
           })
 }
@@ -275,30 +262,33 @@ function history () {
 
     resultlocal = localStorage.getItem("key")
     resultlocal = JSON.parse(resultlocal);
-    resultlocal.forEach(i => {
-    //     console.log(i)
-    //     recentEl
-    // var rsearch = document.createTextNode = `<button class="btn" onclick="apiCall">${i}</button>`
-    //     document.body.appendChild (rsearch)
 
-        
+    // loop passing in each array item as i
+    resultlocal.forEach(i => {
+
+      // create button and append it to page
     const para = document.createElement("button");
     const node = document.createTextNode(i);
-    para.setAttribute("onclick", "recentClick(this.id)");
+      // set the id as the array item
     para.setAttribute("id", i);
+
+    // when the button is clicked pass it id to the recentClick function
+    para.setAttribute("onclick", "recentClick(this.id)");
+   
     para.setAttribute("class", "recentBtn");
+
     para.appendChild(node);
+
     const element = document.getElementById("history");
+
     element.appendChild(para);
     });
-//     // recentEl.innerHTML = `<button class="btn" onclick="apiCall">${i}</button>`
       
 }
 
-
+// create a button of the city search and add place on page
 function searchAdd () {
 
-      
   const para = document.createElement("button");
   const node = document.createTextNode(city);
   para.setAttribute("onclick", "recentClick(this.id)");
@@ -307,16 +297,14 @@ function searchAdd () {
   para.appendChild(node);
   const element = document.getElementById("history");
   element.appendChild(para);
-  
-    
+
 }
 
-
-
-
-
+// the recent search button will pass in it's id
 function recentClick(a) {
-  console.log (a)
+  // a is the passed in value (button id)
+  
+  // set button id as city
   city = a
 
   var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiKey;
@@ -326,28 +314,18 @@ function recentClick(a) {
   })
   .then(function (data) {
 
-    // grab the video Id from response and save it
-  //   vidId = data.items[0].id.videoId
+   
       display = data
       
       lat = display.coord.lat
       lon = display.coord.lon
       
-      // resultDisplay.push(display);
-
-      // var recent = JSON.stringify (resultDisplay);
-      // localStorage.setItem("display", recent)
-
-
     console.log(display)
 
     var datecode = display.dt
    
-
     apiCall2 ()
         })
-  
-
   
 }
 
