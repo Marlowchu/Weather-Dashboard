@@ -140,7 +140,7 @@ function apiCall2() {
 
       var weatherIcon = display2.current.weather[0].icon
       cityName = display.name
-       icon = `<img id="icon"  class="col-md-12 name icon"  src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="">`
+       icon = `<img id="icon"  class="col-md-12 name icon"  src="https://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="">`
       temp = Math.floor(display.main.temp) + " ℉";
       humidity = Math.floor(display.main.humidity) + "% H";
       wind = Math.floor(display.wind.speed) +" MPH";
